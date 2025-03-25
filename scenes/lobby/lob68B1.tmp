@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd0xhp1clgmxv"]
+
+[ext_resource type="Script" path="res://scenes/lobby/lobby.gd" id="1_6ms5r"]
+
+[node name="Lobby" type="CanvasLayer"]
+script = ExtResource("1_6ms5r")
+min_players = null
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.5
+offset_right = 23.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Lobby
+"
+
+[node name="PlayersList" type="GridContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -250.0
+offset_right = 400.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+columns = 2
+
+[node name="StartBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 50)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -137.12
+offset_right = 100.0
+offset_bottom = -66.12
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 45
+text = "Start"
+
+[node name="Characters" type="Node" parent="."]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="StartBtn" to="." method="_on_start_btn_pressed"]

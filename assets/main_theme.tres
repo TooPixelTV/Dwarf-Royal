@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dlcr5xy1fgmuc"]
+
+[ext_resource type="FontFile" uid="uid://d0d5vgyaus3fq" path="res://assets/fonts/Hexenkotel.otf" id="1_brv7x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6p32o"]
+bg_color = Color(0.101961, 0.121569, 0.180392, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.101961, 0.121569, 0.180392, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.627451)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_it1rg"]
+bg_color = Color(0.1311, 0.155825, 0.23, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.129412, 0.156863, 0.231373, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.627451)
+shadow_size = 3
+
+[resource]
+default_font_size = 30
+Button/colors/font_color = Color(0.882353, 0.658824, 0.270588, 1)
+Button/colors/font_hover_color = Color(0.882353, 0.658824, 0.270588, 1)
+Button/fonts/font = ExtResource("1_brv7x")
+Button/styles/focus = SubResource("StyleBoxFlat_6p32o")
+Button/styles/hover = SubResource("StyleBoxFlat_it1rg")
+Button/styles/normal = SubResource("StyleBoxFlat_6p32o")
+Button/styles/pressed = SubResource("StyleBoxFlat_6p32o")
+Label/fonts/font = ExtResource("1_brv7x")
+LineEdit/fonts/font = ExtResource("1_brv7x")

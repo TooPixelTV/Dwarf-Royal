@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://didcdv5h2kt40"]
+
+[ext_resource type="Texture2D" uid="uid://b4fnkwswf4tjd" path="res://assets/sprites/circle_16x16.png" id="1_g0cqy"]
+[ext_resource type="Texture2D" uid="uid://ttmn31ocgjjf" path="res://assets/sprites/tiles-Sheet.png" id="1_idgrb"]
+
+[sub_resource type="Curve" id="Curve_1uhnf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.252747), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_7qsuf"]
+offsets = PackedFloat32Array(0, 0.272727, 0.469697, 0.616162, 0.757576, 1)
+colors = PackedColorArray(0.860051, 0.69223, 0, 1, 1, 0.483333, 0, 1, 1, 0.29, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0)
+
+[node name="Torch" type="Node2D"]
+
+[node name="CircleFlame" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(0, -12.5)
+amount = 100
+lifetime = 1.5
+local_coords = true
+texture = ExtResource("1_g0cqy")
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(0, -1)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 8.13
+initial_velocity_max = 12.0
+scale_amount_min = 0.1
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_1uhnf")
+color_ramp = SubResource("Gradient_7qsuf")
+
+[node name="PixelFlame" type="CPUParticles2D" parent="."]
+position = Vector2(0, -12.5)
+amount = 100
+lifetime = 1.5
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector2(0, -1)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 8.13
+initial_velocity_max = 12.0
+angular_velocity_max = 200.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_1uhnf")
+color_ramp = SubResource("Gradient_7qsuf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_idgrb")
+offset = Vector2(0, -11)
+hframes = 12
+frame = 4

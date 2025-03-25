@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnomor28dcclj"]
+
+[ext_resource type="Script" path="res://scenes/planning_phase_ui/planning_phase_ui.gd" id="1_6sqrk"]
+[ext_resource type="AudioStream" uid="uid://b8s3n1s3f64h5" path="res://assets/sfx/timer_loop.mp3" id="2_21fuc"]
+[ext_resource type="Theme" uid="uid://dlcr5xy1fgmuc" path="res://assets/main_theme.tres" id="2_y7ix2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4xaf"]
+bg_color = Color(0.156863, 0.180392, 0.231373, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 6.0
+expand_margin_top = 19.0
+expand_margin_right = 6.0
+expand_margin_bottom = 19.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1iint"]
+bg_color = Color(0.882353, 0.658824, 0.270588, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_top = 15.0
+expand_margin_bottom = 15.0
+
+[node name="PlanningPhaseUI" type="CanvasLayer"]
+layer = 0
+script = ExtResource("1_6sqrk")
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 25.0
+offset_bottom = 129.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="MainContainer"]
+layout_mode = 2
+theme = ExtResource("2_y7ix2")
+theme_override_colors/font_color = Color(0.882353, 0.658824, 0.270588, 1)
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 70
+text = "Planning phase"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RemainingTime" type="Label" parent="MainContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_y7ix2")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 28
+text = "10"
+horizontal_alignment = 1
+
+[node name="PlanningLabelPostfix" type="Label" parent="MainContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_y7ix2")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 28
+text = "second(s) remaining to choose your next action"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 30
+
+[node name="RemainingTimeProgress" type="ProgressBar" parent="MainContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_w4xaf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1iint")
+value = 50.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="TimerLoopSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_21fuc")
+volume_db = -15.0
+
+[node name="TimerSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+volume_db = -5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,397 @@
+[gd_scene load_steps=13 format=3 uid="uid://bi11ue5j2qppj"]
+
+[ext_resource type="Script" path="res://scenes/tutorial/tutorial.gd" id="1_g50mo"]
+[ext_resource type="PackedScene" uid="uid://chbbklocy3wln" path="res://scenes/menu_background/menu_background.tscn" id="1_jp88f"]
+[ext_resource type="Theme" uid="uid://dlcr5xy1fgmuc" path="res://assets/main_theme.tres" id="2_nh74y"]
+[ext_resource type="PackedScene" uid="uid://db4spagih5a5a" path="res://scenes/character/character.tscn" id="3_qse7n"]
+[ext_resource type="Texture2D" uid="uid://ck13l7segsnmi" path="res://assets/sprites/attack-icon.png" id="4_ojxt2"]
+[ext_resource type="Texture2D" uid="uid://deiapvov4bxb3" path="res://assets/sprites/move-icon.png" id="5_akkui"]
+[ext_resource type="Texture2D" uid="uid://2hi7nc2xjn3j" path="res://assets/sprites/up-down-icon.png" id="6_5bils"]
+[ext_resource type="Texture2D" uid="uid://se7xql0xp1fd" path="res://assets/sprites/flip-icon.png" id="7_r1wd4"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wcp4u"]
+polygon = PackedVector2Array(0, 0, 1152, 0, 1152, 100, 0, 100)
+
+[sub_resource type="Animation" id="Animation_uut2c"]
+resource_name = "continue"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Continue:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.568627), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7jh4a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Continue:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kqqjb"]
+_data = {
+"RESET": SubResource("Animation_7jh4a"),
+"continue": SubResource("Animation_uut2c")
+}
+
+[node name="Tutorial" type="Node"]
+script = ExtResource("1_g50mo")
+
+[node name="MenuBackground" parent="." instance=ExtResource("1_jp88f")]
+display_torches = false
+display_cave = false
+display_ground = false
+metadata/_edit_lock_ = true
+
+[node name="Part1" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TutorialTitle" type="Label" parent="Part1"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme = ExtResource("2_nh74y")
+theme_override_colors/font_color = Color(0.882353, 0.658824, 0.270588, 1)
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 75
+text = "Goal"
+horizontal_alignment = 1
+
+[node name="Content" type="Label" parent="Part1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -194.0
+offset_right = 450.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nh74y")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 45
+text = "To win the game you must be the last survivor.
+
+The game is played in 2 phases:
+
+- The planning phase: You choose an action to perform during your turn.
+- The action phase: The planned actions take place in a random order."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Part2" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TutorialTitle" type="Label" parent="Part2"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme = ExtResource("2_nh74y")
+theme_override_colors/font_color = Color(0.882353, 0.658824, 0.270588, 1)
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 75
+text = "Planning Phase"
+horizontal_alignment = 1
+
+[node name="Content" type="Label" parent="Part2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -240.865
+offset_right = 450.0
+offset_bottom = -160.865
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nh74y")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 45
+text = "Look at the direction your character is facing."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Content6" type="Label" parent="Part2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -75.0
+offset_right = 450.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nh74y")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 45
+text = "Possible actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Content3" type="Label" parent="Part2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -144.0
+offset_right = -14.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nh74y")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 30
+text = "<- Facing left"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Content4" type="Label" parent="Part2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -144.0
+offset_right = 228.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nh74y")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 30
+text = "Facing right ->"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Content5" type="Label" parent="Part2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = 4.0
+offset_right = -16.0
+offset_bottom = 304.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nh74y")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 30
+text = "        !attack/!atk: Throws a pickaxe that travels through your square and the next two in the direction of your character. The first enemy hit will be ejected to the next square and take 1 damage. (Warning: If you are ejected out of the play area you are eliminated)"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Content2" type="Label" parent="Part2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = 4.0
+offset_right = 576.0
+offset_bottom = 304.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nh74y")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 30
+text = "             !move: Moves to the next square in the direction of your character.
+
+             !up/!down: Changes level while staying on the same square.
+
+             !flip: Changes the direction your character is facing."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Character" parent="Part2" instance=ExtResource("3_qse7n")]
+position = Vector2(852, 265)
+display_infos = false
+
+[node name="Character2" parent="Part2" instance=ExtResource("3_qse7n")]
+position = Vector2(300, 265)
+_facing_left = true
+display_infos = false
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Part2"]
+position = Vector2(0, 260.815)
+occluder = SubResource("OccluderPolygon2D_wcp4u")
+
+[node name="Sprite2D" type="Sprite2D" parent="Part2"]
+position = Vector2(47, 355)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_ojxt2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Part2"]
+position = Vector2(640, 351)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("5_akkui")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Part2"]
+position = Vector2(640, 461)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("6_5bils")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Part2"]
+position = Vector2(640, 567)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_r1wd4")
+
+[node name="Part3" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TutorialTitle" type="Label" parent="Part3"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme = ExtResource("2_nh74y")
+theme_override_colors/font_color = Color(0.882353, 0.658824, 0.270588, 1)
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 75
+text = "Details"
+horizontal_alignment = 1
+
+[node name="Content" type="Label" parent="Part3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -254.0
+offset_right = 550.0
+offset_bottom = 304.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nh74y")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 45
+text = "When you take damage
+
+Your character is downed until your next action is resolved.
+A downed character cannot be hit by an attack.
+The next action (whatever it may be) will straighten your character.
+If the \"        \" icon is displayed above your character, you benefit from a free \"!flip\" action during the planning phase, in addition to your action."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="Part3"]
+position = Vector2(233, 442)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_r1wd4")
+
+[node name="Part4" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TutorialTitle" type="Label" parent="Part4"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme = ExtResource("2_nh74y")
+theme_override_colors/font_color = Color(0.882353, 0.658824, 0.270588, 1)
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 75
+text = "Terrain Evolution"
+horizontal_alignment = 1
+
+[node name="Content" type="Label" parent="Part4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -254.0
+offset_right = 550.0
+offset_bottom = 304.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nh74y")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 45
+text = "Every 3 turns a random section at one end of the mine collapses.
+
+The next section that will collapse has an indicator specifying the number of turns before the collapse (this number is updated at the end of each action phase).
+
+Any character present (or entering) a collapsed square is instantly eliminated."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="Continue" type="Label" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_nh74y")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 20
+text = "Click to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kqqjb")
+}
+autoplay = "continue"

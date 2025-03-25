@@ -1,0 +1,279 @@
+[gd_scene load_steps=22 format=4 uid="uid://ciqr3pibiee4t"]
+
+[ext_resource type="Script" path="res://scenes/mine_section/mine_section.gd" id="1_06ns7"]
+[ext_resource type="Shader" path="res://shadow.gdshader" id="2_ol6on"]
+[ext_resource type="TileSet" uid="uid://b1knr1e1cpi7m" path="res://tileset.tres" id="3_0w7yg"]
+[ext_resource type="PackedScene" uid="uid://didcdv5h2kt40" path="res://scenes/torch/torch.tscn" id="3_bdxr6"]
+[ext_resource type="Texture2D" uid="uid://ttmn31ocgjjf" path="res://assets/sprites/tiles-Sheet.png" id="5_666w2"]
+[ext_resource type="AudioStream" uid="uid://dei6bln80o67m" path="res://assets/sfx/collapse.wav" id="5_apwll"]
+[ext_resource type="Theme" uid="uid://dlcr5xy1fgmuc" path="res://assets/main_theme.tres" id="6_ceyfb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rc1v1"]
+shader = ExtResource("2_ol6on")
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/mix_amount = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ko5xf"]
+size = Vector2(560, 80)
+
+[sub_resource type="Curve2D" id="Curve2D_fl20n"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 40, 320, 0, 0, 0, 0, 520, 320)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_gyj0g"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 40, 640, 0, 0, 0, 0, 520, 640)
+}
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ou1hh"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.482353)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nc6lv"]
+gradient = SubResource("Gradient_ou1hh")
+width = 560
+height = 720
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nwva0"]
+particles_animation = true
+particles_anim_h_frames = 12
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_cukqo"]
+offsets = PackedFloat32Array(0, 0.80695, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_futes"]
+gradient = SubResource("Gradient_cukqo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s3h1d"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(280, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angular_velocity_min = -360.49
+angular_velocity_max = 320.37
+gravity = Vector3(0, 200, 0)
+scale_min = 0.5
+scale_max = 1.2
+color_ramp = SubResource("GradientTexture1D_futes")
+anim_offset_min = 0.7647
+anim_offset_max = 1.0
+
+[sub_resource type="Gradient" id="Gradient_wx2ki"]
+offsets = PackedFloat32Array(0, 0.80695, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hxroq"]
+gradient = SubResource("Gradient_wx2ki")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0b2ho"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(280, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angular_velocity_min = -360.49
+angular_velocity_max = 320.37
+gravity = Vector3(0, 200, 0)
+scale_min = 2.0
+scale_max = 5.0
+color_ramp = SubResource("GradientTexture1D_hxroq")
+anim_offset_min = 0.7647
+anim_offset_max = 1.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6kg3k"]
+polygon = PackedVector2Array(0, 0, 560, 0, 560, 80, 0, 80)
+
+[node name="MineSection" type="Node2D"]
+script = ExtResource("1_06ns7")
+section_width = 560.0
+section_height = 720.0
+
+[node name="MainTileLayer2" type="TileMapLayer" parent="."]
+material = SubResource("ShaderMaterial_rc1v1")
+position = Vector2(3.8147e-06, 0)
+scale = Vector2(2.5, 2.5)
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAAAAAQAAAABAAAAAAABAAQAAAABAAAAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAAEAAQAAAABAAAAAAAFAAQAAAABAAAAAAAGAAQAAAABAAAAAAAAAAgAAAABAAAAAAABAAgAAAABAAAAAAACAAgAAAABAAAAAAADAAgAAAABAAAAAAAEAAgAAAABAAAAAAAFAAgAAAABAAAAAAAGAAgAAAABAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAADAAcAAAAAAAAAAAACAAcAAAAAAAAAAAABAAcAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAA=")
+tile_set = ExtResource("3_0w7yg")
+
+[node name="MainTileLayer" type="TileMapLayer" parent="."]
+scale = Vector2(2.5, 2.5)
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAAAAAQAAAABAAAAAAABAAQAAAABAAAAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAAEAAQAAAABAAAAAAAFAAQAAAABAAAAAAAGAAQAAAABAAAAAAAAAAgAAAABAAAAAAABAAgAAAABAAAAAAACAAgAAAABAAAAAAADAAgAAAABAAAAAAAEAAgAAAABAAAAAAAFAAgAAAABAAAAAAAGAAgAAAABAAAAAAA=")
+tile_set = ExtResource("3_0w7yg")
+
+[node name="PropsTileLayer" type="TileMapLayer" parent="."]
+position = Vector2(40, 0)
+scale = Vector2(2.5, 2.5)
+tile_map_data = PackedByteArray("AAD//wIAAAACAAAAAAD//wMAAAACAAAAAAD//wEAAAADAAAAAAD//wUAAAADAAAAAAD//wYAAAACAAAAAAD//wcAAAACAAAAAAAGAAMAAAACAAAAAAAGAAIAAAACAAAAAAAGAAEAAAADAAAAAAAGAAUAAAADAAAAAAAGAAYAAAACAAAAAAAGAAcAAAACAAAAAAA=")
+tile_set = ExtResource("3_0w7yg")
+
+[node name="GroundTop" type="StaticBody2D" parent="."]
+position = Vector2(280, 360)
+collision_layer = 2
+collision_mask = 3
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundTop"]
+shape = SubResource("RectangleShape2D_ko5xf")
+
+[node name="GroundBottom" type="StaticBody2D" parent="."]
+position = Vector2(280, 680)
+collision_layer = 2
+collision_mask = 3
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundBottom"]
+shape = SubResource("RectangleShape2D_ko5xf")
+
+[node name="TopPositionPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_fl20n")
+
+[node name="TopPositionPathFollow" type="PathFollow2D" parent="TopPositionPath"]
+position = Vector2(179.984, 320)
+progress = 139.986
+
+[node name="BottomPositionPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_gyj0g")
+
+[node name="BottomPositionPathFollow" type="PathFollow2D" parent="BottomPositionPath"]
+position = Vector2(40, 640)
+
+[node name="TopCharacters" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="BottomCharacters" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="LadderProps" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="LadderTileLayer" type="TileMapLayer" parent="LadderProps"]
+scale = Vector2(2.5, 2.5)
+tile_map_data = PackedByteArray("AAADAAcAAAAHAAAAAAADAAQAAAAGAAAAAAADAAUAAAAFAAAAAAADAAYAAAAFAAAAAAA=")
+tile_set = ExtResource("3_0w7yg")
+
+[node name="Torch" parent="LadderProps" instance=ExtResource("3_bdxr6")]
+position = Vector2(186.66, 200)
+scale = Vector2(2.5, 2.5)
+
+[node name="Torch2" parent="LadderProps" instance=ExtResource("3_bdxr6")]
+position = Vector2(373.32, 200)
+scale = Vector2(2.5, 2.5)
+
+[node name="Torch3" parent="LadderProps" instance=ExtResource("3_bdxr6")]
+position = Vector2(186.66, 530)
+scale = Vector2(2.5, 2.5)
+
+[node name="Torch4" parent="LadderProps" instance=ExtResource("3_bdxr6")]
+position = Vector2(373.32, 530)
+scale = Vector2(2.5, 2.5)
+
+[node name="ExitProps" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="LadderTileLayer" type="TileMapLayer" parent="ExitProps"]
+position = Vector2(40, 0)
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAABAAEAAAAIAAAAAAABAAMAAAAIAAAAAAA=")
+tile_set = ExtResource("3_0w7yg")
+
+[node name="Torch" parent="ExitProps" instance=ExtResource("3_bdxr6")]
+position = Vector2(186.66, 250)
+scale = Vector2(2.5, 2.5)
+
+[node name="Torch2" parent="ExitProps" instance=ExtResource("3_bdxr6")]
+position = Vector2(373.32, 250)
+scale = Vector2(2.5, 2.5)
+
+[node name="Torch3" parent="ExitProps" instance=ExtResource("3_bdxr6")]
+position = Vector2(186.66, 570)
+scale = Vector2(2.5, 2.5)
+
+[node name="Torch4" parent="ExitProps" instance=ExtResource("3_bdxr6")]
+position = Vector2(373.32, 570)
+scale = Vector2(2.5, 2.5)
+
+[node name="FakeMineShadow" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+texture = SubResource("GradientTexture2D_nc6lv")
+offset = Vector2(280, 360)
+
+[node name="WarningCollapseTop" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_nwva0")
+position = Vector2(280, 80)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_s3h1d")
+texture = ExtResource("5_666w2")
+lifetime = 0.8
+
+[node name="CollapsedTop" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_nwva0")
+position = Vector2(280, 80)
+emitting = false
+amount = 14
+process_material = SubResource("ParticleProcessMaterial_0b2ho")
+texture = ExtResource("5_666w2")
+lifetime = 0.7
+
+[node name="WarningCollapseBottom" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_nwva0")
+position = Vector2(280, 400)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_s3h1d")
+texture = ExtResource("5_666w2")
+lifetime = 0.7
+
+[node name="CollapsedBottom" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_nwva0")
+position = Vector2(280, 400)
+emitting = false
+amount = 14
+process_material = SubResource("ParticleProcessMaterial_0b2ho")
+texture = ExtResource("5_666w2")
+lifetime = 0.7
+
+[node name="CeilingOccluder" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_6kg3k")
+
+[node name="GroundOccluderTop" type="LightOccluder2D" parent="."]
+position = Vector2(0, 320)
+occluder = SubResource("OccluderPolygon2D_6kg3k")
+
+[node name="GroundOccluderBottom" type="LightOccluder2D" parent="."]
+position = Vector2(0, 640)
+occluder = SubResource("OccluderPolygon2D_6kg3k")
+
+[node name="WarningCountdown" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(560, 80)
+offset_right = 560.0
+offset_bottom = 80.0
+theme = ExtResource("6_ceyfb")
+theme_override_colors/font_color = Color(0.882353, 0.658824, 0.270588, 1)
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollapseSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_apwll")
+volume_db = -10.0

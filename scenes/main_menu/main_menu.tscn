@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddpmlw04mf74"]
+
+[ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_u265v"]
+[ext_resource type="Theme" uid="uid://dlcr5xy1fgmuc" path="res://assets/main_theme.tres" id="2_jg3xq"]
+[ext_resource type="PackedScene" uid="uid://chbbklocy3wln" path="res://scenes/menu_background/menu_background.tscn" id="2_k86us"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kup1k"]
+bg_color = Color(0.156863, 0.180392, 0.231373, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_u265v")
+
+[node name="MenuBackground" parent="." instance=ExtResource("2_k86us")]
+display_ground = null
+
+[node name="GameTitle" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("2_jg3xq")
+theme_override_colors/font_color = Color(0.882353, 0.658824, 0.270588, 1)
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 45
+theme_override_font_sizes/font_size = 200
+text = "Dwarf Royal"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.5
+offset_top = -24.0
+offset_right = 185.5
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_jg3xq")
+theme_override_colors/font_color = Color(0.882353, 0.658824, 0.270588, 1)
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 60
+text = "Twitch Channel"
+horizontal_alignment = 1
+
+[node name="ChannelLineEdit" type="LineEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_jg3xq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kup1k")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kup1k")
+text = "toopixeltv"
+alignment = 1
+
+[node name="PlayBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_jg3xq")
+text = "Start New Game"
+
+[connection signal="pressed" from="VBoxContainer/PlayBtn" to="." method="_on_button_pressed"]

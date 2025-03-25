@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd0xhp1clgmxv"]
+
+[ext_resource type="Script" path="res://scenes/lobby/lobby.gd" id="1_6ms5r"]
+[ext_resource type="Theme" uid="uid://dlcr5xy1fgmuc" path="res://assets/main_theme.tres" id="2_0poes"]
+[ext_resource type="PackedScene" uid="uid://chbbklocy3wln" path="res://scenes/menu_background/menu_background.tscn" id="2_gnp5q"]
+[ext_resource type="Texture2D" uid="uid://crmk7tp0w7cdq" path="res://assets/sprites/back-icon.png" id="4_nmqfi"]
+
+[node name="Lobby" type="CanvasLayer"]
+script = ExtResource("1_6ms5r")
+
+[node name="MenuBackground" parent="." instance=ExtResource("2_gnp5q")]
+display_torches = false
+display_cave = false
+
+[node name="LobbyTitle" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 30.0
+offset_bottom = 161.0
+grow_horizontal = 2
+theme = ExtResource("2_0poes")
+theme_override_colors/font_color = Color(0.882353, 0.658824, 0.270588, 1)
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 125
+text = "Lobby
+"
+horizontal_alignment = 1
+
+[node name="PlayersList" type="GridContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.0
+offset_top = -74.0
+offset_right = 464.0
+offset_bottom = 226.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="StartBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 50)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -83.0
+offset_right = 100.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0poes")
+theme_override_font_sizes/font_size = 45
+text = "Start"
+
+[node name="Characters" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="ColorTuto" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -63.0
+offset_right = 441.0
+offset_bottom = -30.0
+grow_vertical = 0
+theme = ExtResource("2_0poes")
+theme_override_colors/font_color = Color(0.882353, 0.658824, 0.270588, 1)
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 25
+text = "!color <color> to change your color"
+
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 30.0
+offset_top = 45.0
+offset_right = 130.0
+offset_bottom = 145.0
+theme = ExtResource("2_0poes")
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="BackButton"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_nmqfi")
+
+[connection signal="pressed" from="StartBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

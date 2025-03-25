@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://jt44byksmmqi"]
+
+[ext_resource type="Script" path="res://scenes/background_music/background_music.gd" id="1_0uq66"]
+[ext_resource type="AudioStream" uid="uid://ya7svlfif87j" path="res://assets/music/music_layer_0.ogg" id="2_3sy4k"]
+[ext_resource type="AudioStream" uid="uid://cq83vbk1sq31k" path="res://assets/music/music_layer_1.ogg" id="3_p0qq3"]
+[ext_resource type="AudioStream" uid="uid://bkrm8eeocrw73" path="res://assets/music/music_layer_2.ogg" id="4_t7qvt"]
+[ext_resource type="AudioStream" uid="uid://cswwpev4sdjb7" path="res://assets/music/music_layer_3.ogg" id="5_o4r22"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_gasy7"]
+stream_count = 4
+stream_0/stream = ExtResource("2_3sy4k")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("3_p0qq3")
+stream_1/volume = -60.0
+stream_2/stream = ExtResource("4_t7qvt")
+stream_2/volume = -60.0
+stream_3/stream = ExtResource("5_o4r22")
+stream_3/volume = -60.0
+
+[node name="BackgroundMusic" type="Node"]
+script = ExtResource("1_0uq66")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamSynchronized_gasy7")
+autoplay = true

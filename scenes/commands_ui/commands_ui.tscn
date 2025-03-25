@@ -1,0 +1,223 @@
+[gd_scene load_steps=10 format=3 uid="uid://lcpi1w3sabql"]
+
+[ext_resource type="Theme" uid="uid://dlcr5xy1fgmuc" path="res://assets/main_theme.tres" id="1_5fjpq"]
+[ext_resource type="Script" path="res://scenes/commands_ui/commands_ui.gd" id="1_bsppu"]
+[ext_resource type="Texture2D" uid="uid://se7xql0xp1fd" path="res://assets/sprites/flip-icon.png" id="2_nd2hm"]
+[ext_resource type="Texture2D" uid="uid://deiapvov4bxb3" path="res://assets/sprites/move-icon.png" id="3_bsfcu"]
+[ext_resource type="Texture2D" uid="uid://2hi7nc2xjn3j" path="res://assets/sprites/up-down-icon.png" id="4_qkaxt"]
+[ext_resource type="Texture2D" uid="uid://ck13l7segsnmi" path="res://assets/sprites/attack-icon.png" id="5_kxvpn"]
+[ext_resource type="Texture2D" uid="uid://dtoucmcd4wrss" path="res://assets/sprites/pause-icon.png" id="6_6ofiy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwabx"]
+bg_color = Color(0.1564, 0.179707, 0.23, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wmfd"]
+bg_color = Color(0.1564, 0.179707, 0.23, 0.588235)
+
+[node name="CommandsUI" type="CanvasLayer"]
+layer = 0
+script = ExtResource("1_bsppu")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wwabx")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_5fjpq")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+text = "Possible actions"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_right = 250
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="FlipCommand" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_5fjpq")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+text = "!flip"
+
+[node name="FlipIcon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_nd2hm")
+
+[node name="VSeparator" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MoveCommand" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_5fjpq")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+text = "!move"
+
+[node name="MoveIcon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_bsfcu")
+
+[node name="VSeparator2" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="UpDownCommand" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_5fjpq")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+text = "!up/!down"
+
+[node name="UpDownIcon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("4_qkaxt")
+
+[node name="VSeparator3" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="AttackCommand" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_5fjpq")
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 15
+text = "!attack/!atk"
+
+[node name="AttackIcon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("5_kxvpn")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 250
+
+[node name="PauseUI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Panel" type="Panel" parent="PauseUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0wmfd")
+
+[node name="Label" type="Label" parent="PauseUI/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5fjpq")
+theme_override_colors/font_color = Color(0.882353, 0.658824, 0.270588, 1)
+theme_override_colors/font_outline_color = Color(0.156863, 0.180392, 0.231373, 1)
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/font_size = 150
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="ResumeBtn" type="Button" parent="PauseUI/Panel"]
+process_mode = 3
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 76.0
+offset_right = 88.0
+offset_bottom = 149.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5fjpq")
+theme_override_font_sizes/font_size = 50
+text = "Resume"
+
+[node name="QuitBtn" type="Button" parent="PauseUI/Panel"]
+process_mode = 3
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = 166.0
+offset_right = 52.0
+offset_bottom = 239.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5fjpq")
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="PauseBtnUI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="PauseBtn" type="Button" parent="PauseBtnUI"]
+process_mode = 3
+z_index = 10
+z_as_relative = false
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 60.0
+offset_bottom = 60.0
+theme = ExtResource("1_5fjpq")
+
+[node name="TextureRect" type="TextureRect" parent="PauseBtnUI/PauseBtn"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("6_6ofiy")
+
+[connection signal="pressed" from="PauseUI/Panel/ResumeBtn" to="." method="_on_pause_btn_pressed"]
+[connection signal="pressed" from="PauseUI/Panel/QuitBtn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="PauseBtnUI/PauseBtn" to="." method="_on_pause_btn_pressed"]
