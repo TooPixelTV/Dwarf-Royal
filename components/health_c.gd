@@ -20,11 +20,12 @@ func reset():
 	health_updated.emit(current_health)
 	
 func take_damage():
-	current_health -= 1
-	if current_health <= 0:
-		current_health = 0
-		died.emit()
-	health_updated.emit(current_health)
+	if GameManager.enable_lifes:
+		current_health -= 1
+		if current_health <= 0:
+			current_health = 0
+			died.emit()
+		health_updated.emit(current_health)
 
 func kill():
 	current_health = 0;

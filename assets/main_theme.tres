@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dlcr5xy1fgmuc"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dlcr5xy1fgmuc"]
 
 [ext_resource type="FontFile" uid="uid://d0d5vgyaus3fq" path="res://assets/fonts/Hexenkotel.otf" id="1_brv7x"]
+[ext_resource type="Texture2D" uid="uid://ddxff6bm4kfcv" path="res://assets/sprites/checked-icon.png" id="2_ykkhj"]
+[ext_resource type="Texture2D" uid="uid://du3dqn1asd03l" path="res://assets/sprites/unchecked-icon.png" id="3_lpl45"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6p32o"]
 bg_color = Color(0.101961, 0.121569, 0.180392, 1)
@@ -39,5 +41,9 @@ Button/styles/focus = SubResource("StyleBoxFlat_6p32o")
 Button/styles/hover = SubResource("StyleBoxFlat_it1rg")
 Button/styles/normal = SubResource("StyleBoxFlat_6p32o")
 Button/styles/pressed = SubResource("StyleBoxFlat_6p32o")
+CheckBox/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+CheckBox/colors/font_pressed_color = Color(0.882353, 0.658824, 0.270588, 1)
+CheckBox/icons/checked = ExtResource("2_ykkhj")
+CheckBox/icons/unchecked = ExtResource("3_lpl45")
 Label/fonts/font = ExtResource("1_brv7x")
 LineEdit/fonts/font = ExtResource("1_brv7x")

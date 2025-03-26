@@ -16,6 +16,7 @@ var characters: Array[Character] = []
 var mine_sections: Array[MineSection] = []
 var rounds: int = 0
 var winners: Array[Player] = []
+var enable_lifes: bool = true
 
 var camera: DynamicCamera
 var game: Game

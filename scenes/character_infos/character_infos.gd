@@ -4,6 +4,9 @@ class_name CharacterInfos
 @export var character: Character
 
 func _ready() -> void:
+	if not GameManager.enable_lifes:
+		%HealthLabel.hide()
+	
 	if character:
 		character.infos_updated.connect(_update_stats)
 		character.healthC.health_updated.connect(_update_health_label)

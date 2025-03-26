@@ -15,7 +15,6 @@ corner_radius_bottom_left = 10
 script = ExtResource("1_u265v")
 
 [node name="MenuBackground" parent="." instance=ExtResource("2_k86us")]
-display_ground = null
 
 [node name="GameTitle" type="Label" parent="."]
 anchors_preset = 10
@@ -61,7 +60,7 @@ layout_mode = 2
 theme = ExtResource("2_jg3xq")
 theme_override_styles/focus = SubResource("StyleBoxFlat_kup1k")
 theme_override_styles/normal = SubResource("StyleBoxFlat_kup1k")
-text = "toopixeltv"
+placeholder_text = "Enter your twitch channel"
 alignment = 1
 
 [node name="PlayBtn" type="Button" parent="VBoxContainer"]
@@ -69,4 +68,16 @@ layout_mode = 2
 theme = ExtResource("2_jg3xq")
 text = "Start New Game"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="EnableLifesCheckbox" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_jg3xq")
+text = " Enable Lifes"
+
 [connection signal="pressed" from="VBoxContainer/PlayBtn" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/EnableLifesCheckbox" to="." method="_on_enable_lifes_checkbox_toggled"]
