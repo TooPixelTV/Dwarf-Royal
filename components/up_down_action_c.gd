@@ -26,14 +26,13 @@ func _end_movement(mine_section: MineSection, floor_type: MineSection.FloorType)
 	character.force_walk = true
 	await character.play_stair_animation(mine_section.is_ladder_mine, true)
 	character.force_static = true
+	var randomSide = [MineSection.SideType.LEFT, MineSection.SideType.RIGHT].pick_random()
 	if floor_type == MineSection.FloorType.TOP:
-		# TODO refléchir au placement à l'arrivée
-		mine_section.add_character(character, MineSection.FloorType.BOTTOM, MineSection.SideType.LEFT, false)
+		mine_section.add_character(character, MineSection.FloorType.BOTTOM, randomSide, false)
 		if not mine_section.is_ladder_mine:
 			character.position.y = mine_section.bottom_position_path_follow.global_position.y
 	else:
-		# TODO refléchir au placement à l'arrivée
-		mine_section.add_character(character, MineSection.FloorType.TOP, MineSection.SideType.LEFT, false)
+		mine_section.add_character(character, MineSection.FloorType.TOP, randomSide, false)
 		if not mine_section.is_ladder_mine:
 			character.position.y = mine_section.top_position_path_follow.global_position.y
 	
