@@ -3,9 +3,11 @@ class_name CharacterInfos
 
 @export var character: Character
 
+const HEART = preload("res://assets/heart.png")
+
 func _ready() -> void:
 	if not GameManager.enable_lifes:
-		%HealthLabel.hide()
+		%HealthBar.hide()
 	
 	if character:
 		character.infos_updated.connect(_update_stats)
@@ -33,8 +35,12 @@ func _update_stats():
 			%FreeFlipSprite.hide()
 
 func _update_health_label(value: int):
-	var health_text: String = ""
+	var children = %HealthBar.get_children()
+	for child in children:
+		%HealthBar.remove_child(child)
+
 	for i in value:
-		health_text += "❤️"
-	
-	%HealthLabel.text = health_text
+		var heart = TextureRect.new()
+		heart.texture = HEART
+		heart.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+		%HealthBar.add_child(heart)

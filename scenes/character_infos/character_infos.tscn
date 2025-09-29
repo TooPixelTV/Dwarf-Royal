@@ -1,27 +1,57 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8keimujoqg0h"]
+[gd_scene load_steps=5 format=3 uid="uid://c8keimujoqg0h"]
 
 [ext_resource type="Script" path="res://scenes/character_infos/character_infos.gd" id="1_rcevn"]
 [ext_resource type="Theme" uid="uid://dlcr5xy1fgmuc" path="res://assets/main_theme.tres" id="2_l2qeu"]
+[ext_resource type="Texture2D" uid="uid://cobd61l24o5ii" path="res://assets/heart.png" id="2_rag80"]
 [ext_resource type="Texture2D" uid="uid://se7xql0xp1fd" path="res://assets/sprites/flip-icon.png" id="3_3uifk"]
 
 [node name="CharacterInfos" type="Node2D"]
 script = ExtResource("1_rcevn")
 
-[node name="HealthLabel" type="Label" parent="."]
+[node name="HealthBar" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -33.0
+offset_left = -40.0
 offset_top = -175.0
-offset_right = 33.0
-offset_bottom = -152.0
+offset_right = 40.0
+offset_bottom = -155.0
 grow_horizontal = 2
 grow_vertical = 0
-horizontal_alignment = 1
-vertical_alignment = 1
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HealthBar"]
+layout_mode = 2
+texture = ExtResource("2_rag80")
+expand_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="HealthBar"]
+layout_mode = 2
+texture = ExtResource("2_rag80")
+expand_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="HealthBar"]
+layout_mode = 2
+texture = ExtResource("2_rag80")
+expand_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="HealthBar"]
+layout_mode = 2
+texture = ExtResource("2_rag80")
+expand_mode = 3
+
+[node name="TextureRect6" type="TextureRect" parent="HealthBar"]
+layout_mode = 2
+texture = ExtResource("2_rag80")
+expand_mode = 3
+
+[node name="TextureRect7" type="TextureRect" parent="HealthBar"]
+layout_mode = 2
+texture = ExtResource("2_rag80")
+expand_mode = 3
 
 [node name="Name" type="Label" parent="."]
 unique_name_in_owner = true
